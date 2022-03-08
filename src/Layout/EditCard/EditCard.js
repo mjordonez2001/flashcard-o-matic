@@ -56,11 +56,19 @@ function EditCard() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Front</label>
-                    <textarea className="form-control" id="name" placeholder={card.front} />
+                    <textarea 
+                        className="form-control" 
+                        id="name" 
+                        value={card.front}
+                        placeholder={card.front} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="description">Back</label>
-                    <textarea className="form-control" id="description" placeholder={card.back} />
+                    <textarea 
+                        className="form-control" 
+                        id="description" 
+                        value={card.back}
+                        placeholder={card.back} />
                 </div>
                 <div className="d-flex flex-row">
                     <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Cancel</Link>

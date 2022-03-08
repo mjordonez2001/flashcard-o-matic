@@ -41,11 +41,20 @@ function EditDeck() {
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" className="form-control" id="name" placeholder={deck.name} />
+                    <input 
+                        type="text" 
+                        className="form-control" 
+                        id="name" 
+                        value={deck.name}
+                        placeholder={deck.name} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="description">Description</label>
-                    <textarea className="form-control" id="description" placeholder={deck.description} />
+                    <textarea 
+                        className="form-control" 
+                        id="description" 
+                        value={deck.description}
+                        placeholder={deck.description} />
                 </div>
                 <div className="d-flex flex-row">
                     <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Cancel</Link>
