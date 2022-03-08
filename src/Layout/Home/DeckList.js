@@ -1,34 +1,12 @@
-import React, { useState, useEffect } from "react";
-import { listDecks } from "../../utils/api";
+import React from "react";
 import { Link } from "react-router-dom";
 import Deck from "./Deck";
 
-function Decks() {
-    const [decks, setDecks] = useState([]);
-
-    useEffect(() => {
-        const abortController = new AbortController();
-
-        async function loadDecks() {
-            try {
-                const response = await listDecks();
-                setDecks(response);
-            } catch(error) {
-                console.log(error);
-            }
-        }
-
-        loadDecks();
-        return () => abortController.abort();
-    }, []);
-
-    const deleteHandler = () => {
-        window.confirm("Delete this deck? \n\nYou will not be able to recover it");
-    }
+function DeckList({decks}) {
 
     const allDecks = decks.map((deck, index) => {
         return (
-            <Deck deck={deck} key={index} deleteHandler={deleteHandler} />
+            <Deck deck={deck} key={index}/>
         );
     })
 
@@ -40,4 +18,4 @@ function Decks() {
     );
 }
 
-export default Decks;
+export default DeckList;

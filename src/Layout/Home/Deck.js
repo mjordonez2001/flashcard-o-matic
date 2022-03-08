@@ -1,11 +1,19 @@
 import React, {  } from "react";
 import { Link } from "react-router-dom";
+import { deleteDeck } from "../../utils/api";
 
 
-function Deck( { deck, deleteHandler } ) {
+function Deck( { deck } ) {
 
     let deckLength = 0;
     if (deck.cards && deck.cards.length) deckLength = deck.cards.length;
+
+    const deleteHandler = () => {
+        if (window.confirm("Delete this deck? \n\nYou will not be able to recover it")) {
+            deleteDeck(deck.id)
+            window.location.reload();
+        }
+    }
 
 
     return (

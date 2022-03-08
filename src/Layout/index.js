@@ -1,22 +1,43 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Header from "./Header";
 import NotFound from "./NotFound";
-import Decks from "./Home/DeckList";
+import DeckList from "./Home/DeckList";
 import Study from "./Study/Study";
 import CreateDeck from "./CreateDeck/CreateDeck";
 import Deck from "./Deck/Deck";
 import EditDeck from "./EditDeck/EditDeck";
 import ModifyCard from "./ModifyCard/ModifyCard";
 import { Route, Switch } from "react-router-dom";
+import { listDecks } from "../utils/api";
 
 function Layout() {
+  const [decks, setDecks] = useState([]);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    async function loadDecks() {
+        try {
+            const response = await listDecks();
+            setDecks(response);
+        } catch(error) {
+            console.log(error);
+        }
+    }
+
+    loadDecks();
+    setDeckID(decks.length+1);
+
+    return () => abortController.abort();
+}, [decks]);
+
   return (
     <Fragment>
       <Header />
       <div className="container">
         <Switch>
           <Route exact path="/">
-            <Decks />
+            <DeckList decks={decks} />
           </Route>
 
           <Route path="/decks/:deckId/study">

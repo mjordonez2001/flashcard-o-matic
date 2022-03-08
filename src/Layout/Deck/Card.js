@@ -3,7 +3,10 @@ import { Link } from "react-router-dom"
 
 function Card( { card, deckId } ) {
     const deleteHandler = () => {
-        window.confirm("Delete this card? \n\nYou will not be able to recover it");
+        if (window.confirm("Delete this card? \n\nYou will not be able to recover it")) {
+            
+        }
+
     }
 
     return (
