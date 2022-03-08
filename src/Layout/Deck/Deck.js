@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import CardsList from "./CardsList";
-import { deleteDeck } from "../../utils/api";
 
 function Deck() {
     const params = useParams();
     const deckId = params.deckId;
-    const history = useHistory();
 
     const [deck, setDeck] = useState({});
 
@@ -28,10 +26,7 @@ function Deck() {
     }, [deckId])
 
     const deleteHandler = () => {
-        if (window.confirm("Delete this deck? \n\nYou will not be able to recover it")) {
-            deleteDeck(deckId);
-            history.push('/');
-        }
+        window.confirm("Delete this deck? \n\nYou will not be able to recover it");
     }
 
 

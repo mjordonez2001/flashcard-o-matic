@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 
-function EditDeck() {
+function AddCard() {
     const params = useParams();
     const deckId = params.deckId;
 
@@ -33,27 +33,27 @@ function EditDeck() {
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item"><Link to="">{deck.name}</Link></li>
-                    <li className="breadcrumb-item active">Edit Deck</li>
+                    <li className="breadcrumb-item"><Link to={`/decks/${deck.id}`}>{deck.name}</Link></li>
+                    <li className="breadcrumb-item active">Add Card</li>
                 </ol>
             </nav>
-            <h1>Edit Deck</h1>
+            <h3>{deck.name}: Add Card</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" className="form-control" id="name" placeholder={deck.name} />
+                    <label htmlFor="name">Front</label>
+                    <textarea className="form-control" id="name" placeholder="Front side of card" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="description">Description</label>
-                    <textarea className="form-control" id="description" placeholder={deck.description} />
+                    <label htmlFor="description">Back</label>
+                    <textarea className="form-control" id="description" placeholder="Back side of card" />
                 </div>
                 <div className="d-flex flex-row">
-                    <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Cancel</Link>
-                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Done</Link>
+                    <button type="submit" className="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>
     )
 }
 
-export default EditDeck;
+export default AddCard;

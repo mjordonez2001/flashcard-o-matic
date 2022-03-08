@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom"
-import { readDeck } from "../../utils/api";
+import { useParams, Link } from "react-router-dom";
+import { readDeck, readCard } from "../../utils/api";
 
-function EditDeck() {
+///decks/:deckId/cards/:cardId/edit
+
+function EditCard() {
     const params = useParams();
     const deckId = params.deckId;
+    const cardId = params.cardId;
 
     const [deck, setDeck] = useState({});
+    const [card, setCard] = useState({});
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -20,32 +24,43 @@ function EditDeck() {
             }
         }
 
+        async function loadCard() {
+            try {
+                const response = await readCard(cardId);
+                setCard(response);
+            } catch(error) {
+                console.log(error);
+            }
+        }
+
         loadDeck();
+        loadCard();
+
         return () => abortController.abort();
-    }, [deckId])
+    }, [deckId, cardId])
 
     const handleSubmit = () => {
 
     }
-
+ 
     return (
         <div>
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item"><Link to="">{deck.name}</Link></li>
-                    <li className="breadcrumb-item active">Edit Deck</li>
+                    <li className="breadcrumb-item"><Link to={`/decks/${deck.id}`}>Deck {deck.name}</Link></li>
+                    <li className="breadcrumb-item active">Edit Card {cardId}</li>
                 </ol>
             </nav>
-            <h1>Edit Deck</h1>
+            <h3>Edit Card</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" className="form-control" id="name" placeholder={deck.name} />
+                    <label htmlFor="name">Front</label>
+                    <textarea className="form-control" id="name" placeholder={card.front} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="description">Description</label>
-                    <textarea className="form-control" id="description" placeholder={deck.description} />
+                    <label htmlFor="description">Back</label>
+                    <textarea className="form-control" id="description" placeholder={card.back} />
                 </div>
                 <div className="d-flex flex-row">
                     <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Cancel</Link>
@@ -56,4 +71,4 @@ function EditDeck() {
     )
 }
 
-export default EditDeck;
+export default EditCard;
