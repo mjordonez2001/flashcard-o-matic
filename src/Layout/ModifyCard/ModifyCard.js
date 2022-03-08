@@ -4,13 +4,14 @@ import { readDeck, readCard } from "../../utils/api";
 
 ///decks/:deckId/cards/:cardId/edit
 
-function EditCard() {
+function ModifyCard( { type } ) {
     const params = useParams();
     const deckId = params.deckId;
     const cardId = params.cardId;
 
     const [deck, setDeck] = useState({});
     const [card, setCard] = useState({});
+    const [form, setForm] = useState("");
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -36,11 +37,28 @@ function EditCard() {
         loadDeck();
         loadCard();
 
+        setForm(type);
+
         return () => abortController.abort();
     }, [deckId, cardId])
 
     const handleSubmit = () => {
 
+    }
+
+    let title = "";
+    let frontValue = "";
+    let backValue = "";
+
+    if (form === "add") {
+        title = "Add Card"
+        frontValue = "Front side of card";
+        backValue = "Back side of card";
+
+    } else {
+        title = `Edit Card`;
+        frontValue = card.front;
+        backValue = card.back;
     }
  
     return (
@@ -48,27 +66,27 @@ function EditCard() {
             <nav aria-label="breadcrumb">
                 <ol className="breadcrumb">
                     <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                    <li className="breadcrumb-item"><Link to={`/decks/${deck.id}`}>Deck {deck.name}</Link></li>
-                    <li className="breadcrumb-item active">Edit Card {cardId}</li>
+                    <li className="breadcrumb-item"><Link to={`/decks/${deck.id}`}>{deck.name}</Link></li>
+                    <li className="breadcrumb-item active">{title} {cardId}</li>
                 </ol>
             </nav>
-            <h3>Edit Card</h3>
+            <h3>{title}</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Front</label>
                     <textarea 
                         className="form-control" 
                         id="name" 
-                        value={card.front}
-                        placeholder={card.front} />
+                        value={frontValue}
+                        placeholder={frontValue} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="description">Back</label>
                     <textarea 
                         className="form-control" 
                         id="description" 
-                        value={card.back}
-                        placeholder={card.back} />
+                        value={backValue}
+                        placeholder={backValue} />
                 </div>
                 <div className="d-flex flex-row">
                     <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Cancel</Link>
@@ -79,4 +97,4 @@ function EditCard() {
     )
 }
 
-export default EditCard;
+export default ModifyCard;
