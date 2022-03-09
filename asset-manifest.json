@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/flashcard-o-matic/static/js/main.6bc4d58f.chunk.js",
+    "main.js.map": "/flashcard-o-matic/static/js/main.6bc4d58f.chunk.js.map",
+    "runtime-main.js": "/flashcard-o-matic/static/js/runtime-main.fa0a33e4.js",
+    "runtime-main.js.map": "/flashcard-o-matic/static/js/runtime-main.fa0a33e4.js.map",
+    "static/js/2.688320a1.chunk.js": "/flashcard-o-matic/static/js/2.688320a1.chunk.js",
+    "static/js/2.688320a1.chunk.js.map": "/flashcard-o-matic/static/js/2.688320a1.chunk.js.map",
+    "index.html": "/flashcard-o-matic/index.html",
+    "static/js/2.688320a1.chunk.js.LICENSE.txt": "/flashcard-o-matic/static/js/2.688320a1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fa0a33e4.js",
+    "static/js/2.688320a1.chunk.js",
+    "static/js/main.6bc4d58f.chunk.js"
+  ]
+}
