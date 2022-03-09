@@ -60,7 +60,7 @@ function Form({deck, cardFront, cardBack, formType}) {
                     placeholder="Back side of card" />
             </div>
             <div className="d-flex flex-row">
-                <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Done</Link>
+                <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">Done</Link>
                 <button type="submit" className="btn btn-primary">Save</button>
             </div>
         </form>

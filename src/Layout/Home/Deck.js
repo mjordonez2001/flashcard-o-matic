@@ -19,17 +19,19 @@ function Deck( { deck } ) {
 
     // html
     return (
-        <div className="card">
+        <div className="card my-2">
             <div className="card-body">
                 <div className="d-flex flex-row justify-content-between">
                     <h5 className="card-title">{deck.name}</h5>
                     <p className="card-text"><small className="text-muted">{deckLength} cards</small></p>
                 </div>
                 <p className="card-text">{deck.description}</p>
-                <div className="d-flex flex-row justify-content-around">
-                    <Link to={`/decks/${deck.id}`} className="btn btn-secondary">View</Link>
-                    <Link to={`/decks/${deck.id}/study`}className="btn btn-primary">Study</Link>
-                    <button type="button" className="btn btn-danger" onClick={deleteHandler}>Delete</button>
+                <div className="d-flex flex-row justify-content-between">
+                    <div>
+                        <Link to={`/decks/${deck.id}`} className="btn btn-secondary mx-2">View</Link>
+                        <Link to={`/decks/${deck.id}/study`}className="btn btn-primary mx-2">Study</Link>
+                    </div>
+                    <button type="button" className="btn btn-danger mx-2" onClick={deleteHandler}>Delete</button>
                 </div>
             </div>
         </div>

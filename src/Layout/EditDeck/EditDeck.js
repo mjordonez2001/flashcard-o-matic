@@ -67,7 +67,7 @@ function EditDeck() {
                     <li className="breadcrumb-item active">Edit Deck</li>
                 </ol>
             </nav>
-            <h1>Edit Deck</h1>
+            <h3>Edit Deck</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
@@ -91,7 +91,7 @@ function EditDeck() {
                         placeholder={deck.description} />
                 </div>
                 <div className="d-flex flex-row">
-                    <Link to={`/decks/${deck.id}`} className="btn btn-secondary">Cancel</Link>
+                    <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">Cancel</Link>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </form>

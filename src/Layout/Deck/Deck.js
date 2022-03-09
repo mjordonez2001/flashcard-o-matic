@@ -39,10 +39,10 @@ function Deck() {
         }
     }
 
-    // sets the tile to "No Cards" if there are no cards in the deck, otherwise it's Add Cards
+    // sets the tile to "No Cards" if there are no cards in the deck, otherwise it's "Cards"
     let title = "";
     if (deck.cards && deck.cards.length) {
-        title = "Add Cards";
+        title = "Cards";
     } else {
         title = "No Cards";
     }
@@ -56,15 +56,17 @@ function Deck() {
                     <li className="breadcrumb-item active">{deck.name}</li>
                 </ol>
             </nav>
-            <h5>{deck.name}</h5>
+            <h4>{deck.name}</h4>
             <p>{deck.description}</p>
-            <div className="d-flex flex-row">
-                <Link to={`/decks/${deck.id}/edit`} className="btn btn-secondary">Edit</Link>
-                <Link to={`/decks/${deck.id}/study`} className="btn btn-primary">Study</Link>
-                <Link to={`/decks/${deck.id}/cards/new`} className="btn btn-primary">Add Cards</Link>
+            <div className="d-flex flex-row justify-content-between mb-5">
+                <div>
+                    <Link to={`/decks/${deck.id}/edit`} className="btn btn-secondary">Edit</Link>
+                    <Link to={`/decks/${deck.id}/study`} className="btn btn-primary mx-2">Study</Link>
+                    <Link to={`/decks/${deck.id}/cards/new`} className="btn btn-primary">Add Cards</Link>
+                </div>
                 <button type="button" className="btn btn-danger" onClick={deleteHandler}>Delete</button>
             </div>
-            <h2>{title}</h2>
+            <h3>{title}</h3>
             <CardsList cards={deck.cards} deckId={deckId}/>
         </div>
     )

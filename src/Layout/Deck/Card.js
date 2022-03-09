@@ -13,14 +13,14 @@ function Card( { card, deckId } ) {
 
     // html
     return (
-        <div className="card">
+        <div className="card my-2 p-3">
             <div className="d-flex flex-row justify-content-between">
-                <div className="card-text">{card.front}</div>
-                <div className="card-text">{card.back}</div>
+                <div className="card-text col-5">{card.front}</div>
+                <div className="card-text col-5">{card.back}</div>
             </div>
-            <div className="d-flex flex-row justify-content-end">
-                <Link to={`/decks/${deckId}/cards/${card.id}/edit`} className="btn btn-secondary">Edit</Link>
-                <button className="btn btn-danger" onClick={deleteHandler}>Delete</button>
+            <div className="d-flex flex-row justify-content-end mt-3">
+                <Link to={`/decks/${deckId}/cards/${card.id}/edit`} className="btn btn-secondary mr-2">Edit</Link>
+                <button className="btn btn-danger mr-2" onClick={deleteHandler}>Delete</button>
             </div>
 
         </div>

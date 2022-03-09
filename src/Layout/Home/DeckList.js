@@ -36,7 +36,7 @@ function Decks() {
     // html
     return (
         <div>
-            <Link to="/decks/new" className="btn btn-secondary">+ Create Deck</Link>
+            <Link to="/decks/new" className="btn btn-secondary my-2">+ Create Deck</Link>
             {allDecks}
         </div>
     );

@@ -43,7 +43,7 @@ function Study() {
                     <li className="breadcrumb-item active">Study</li>
                 </ol>
             </nav>
-            <h1>Study: {deck.name}</h1>
+            <h3 className="my-3">Study: {deck.name}</h3>
             <Card deck={deck} deckLength={deckLength}/>
         </div>
     )

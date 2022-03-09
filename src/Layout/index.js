@@ -17,7 +17,7 @@ function Layout() {
   return (
     <Fragment>
       <Header />
-      <div className="container">
+      <div className="container col-8 mb-5">
         <Switch>
           <Route exact path="/">
             <Decks />

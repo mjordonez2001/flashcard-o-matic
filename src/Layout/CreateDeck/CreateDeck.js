@@ -39,7 +39,7 @@ function CreateDeck() {
                     <li className="breadcrumb-item active">Create Deck</li>
                 </ol>
             </nav>
-            <h1>Create Deck</h1>
+            <h3>Create Deck</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
@@ -63,7 +63,7 @@ function CreateDeck() {
                         placeholder="Brief description of the deck" />
                 </div>
                 <div className="d-flex flex-row">
-                    <Link to="" className="btn btn-secondary">Cancel</Link>
+                    <Link to="" className="btn btn-secondary mr-2">Cancel</Link>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </form>

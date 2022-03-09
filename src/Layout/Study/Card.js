@@ -20,7 +20,7 @@ function Card({deck, deckLength}) {
     if (deckLength < 3) {
         return (
             <div>
-                <h2>Not enough cards.</h2>
+                <h4>Not enough cards.</h4>
                 <p>You need at least 3 cards to study. There are {deckLength} cards in this deck.</p>
                 <Link to={`/decks/${deck.id}/cards/new`} className="btn btn-primary">+ Add Cards</Link>
             </div>
@@ -74,7 +74,7 @@ function Card({deck, deckLength}) {
                 <h5 className="card-title">Card {cardIndex+1} of {deckLength}</h5>
                 <p className="card-text">{cardDisplay}</p>
                 <div>
-                    <button className="btn btn-secondary" onClick={flipHandler}>Flip</button>
+                    <button className="btn btn-secondary mx-2" onClick={flipHandler}>Flip</button>
                     {nextButton}
                 </div>
             </div>
