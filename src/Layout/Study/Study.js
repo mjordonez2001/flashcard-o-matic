@@ -29,6 +29,13 @@ function Study() {
         return () => abortController.abort();
     }, [deckId])
 
+    // loading screen
+    if (!deck.cards) {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
+
     // makes sure the deck has cards to use deckLength for the number of cards in the deck
     let deckLength = 0;
     if (deck.cards && deck.cards.length) deckLength = deck.cards.length;

@@ -28,6 +28,13 @@ function AddCard() {
         return () => abortController.abort();
     }, [deckId])
 
+    // loading screen
+    if (!deck.cards) {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
+
     // html -- uses Form component
     return (
         <div>

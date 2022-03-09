@@ -33,6 +33,13 @@ function Decks() {
         );
     })
 
+    // loading screen
+    if (!decks.length) {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
+
     // html
     return (
         <div>

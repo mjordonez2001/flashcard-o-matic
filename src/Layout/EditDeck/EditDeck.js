@@ -57,6 +57,13 @@ function EditDeck() {
         history.push(`/decks/${deckId}`);
     }
 
+    // loading screen
+    if (!deck.cards) {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
+
     // html
     return (
         <div>

@@ -41,6 +41,13 @@ function EditCard() {
 
         return () => abortController.abort();
     }, [deckId, cardId])
+
+    // loading screen
+    if (!deck.cards) {
+        return (
+            <h1>Loading...</h1>
+        )
+    }
  
     // html -- uses Form componet
     return (
