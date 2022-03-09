@@ -3,12 +3,16 @@ import { useParams, Link } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import Card from "./Card";
 
+// study page
 function Study() {
+    // crates deckId based on params that is used in useEffect
     const params = useParams();
     const deckId = params.deckId;
 
+    // creates a state for the current deck
     const [deck, setDeck] = useState({});
 
+    // loads the current deck
     useEffect(() => {
         const abortController = new AbortController();
 
@@ -25,9 +29,11 @@ function Study() {
         return () => abortController.abort();
     }, [deckId])
 
+    // makes sure the deck has cards to use deckLength for the number of cards in the deck
     let deckLength = 0;
     if (deck.cards && deck.cards.length) deckLength = deck.cards.length;
 
+    // html
     return (
         <div>
             <nav aria-label="breadcrumb">

@@ -3,9 +3,12 @@ import { listDecks } from "../../utils/api";
 import { Link } from "react-router-dom";
 import Deck from "./Deck";
 
+// lists all the decks in the home page
 function Decks() {
+    // creates a state for all the decks
     const [decks, setDecks] = useState([]);
 
+    // loads all decks
     useEffect(() => {
         const abortController = new AbortController();
 
@@ -22,16 +25,15 @@ function Decks() {
         return () => abortController.abort();
     }, []);
 
-    const deleteHandler = () => {
-        window.confirm("Delete this deck? \n\nYou will not be able to recover it");
-    }
 
+    // maps all decks into the Deck component
     const allDecks = decks.map((deck, index) => {
         return (
-            <Deck deck={deck} key={index} deleteHandler={deleteHandler} />
+            <Deck deck={deck} key={index} />
         );
     })
 
+    // html
     return (
         <div>
             <Link to="/decks/new" className="btn btn-secondary">+ Create Deck</Link>

@@ -2,13 +2,19 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { readDeck } from "../../utils/api";
 import CardsList from "./CardsList";
+import { deleteDeck } from "../../utils/api";
+import { useHistory } from "react-router-dom";
 
+// deck screen
 function Deck() {
+
+    // sets the deckId used in loading the deck, and creates a state for the deck
     const params = useParams();
     const deckId = params.deckId;
-
     const [deck, setDeck] = useState({});
+    const history = useHistory();
 
+    // loads deck
     useEffect(() => {
         const abortController = new AbortController();
 
@@ -25,11 +31,23 @@ function Deck() {
         return () => abortController.abort();
     }, [deckId])
 
+    // deletes deck if user clicks delete button, and then takes user back to home screen
     const deleteHandler = () => {
-        window.confirm("Delete this deck? \n\nYou will not be able to recover it");
+        if (window.confirm("Delete this deck? \n\nYou will not be able to recover it")) {
+            deleteDeck(deck.id);
+            history.push("/");
+        }
     }
 
+    // sets the tile to "No Cards" if there are no cards in the deck, otherwise it's Add Cards
+    let title = "";
+    if (deck.cards && deck.cards.length) {
+        title = "Add Cards";
+    } else {
+        title = "No Cards";
+    }
 
+    // html
     return (
         <div>
             <nav aria-label="breadcrumb">
@@ -46,7 +64,7 @@ function Deck() {
                 <Link to={`/decks/${deck.id}/cards/new`} className="btn btn-primary">Add Cards</Link>
                 <button type="button" className="btn btn-danger" onClick={deleteHandler}>Delete</button>
             </div>
-            <h2>Cards</h2>
+            <h2>{title}</h2>
             <CardsList cards={deck.cards} deckId={deckId}/>
         </div>
     )

@@ -1,13 +1,23 @@
 import React, {  } from "react";
 import { Link } from "react-router-dom";
+import { deleteDeck } from "../../utils/api";
 
+// home page deck component
+function Deck( { deck } ) {
 
-function Deck( { deck, deleteHandler } ) {
-
+    // deckLength is used to see the number of cards. makes sure the deck is valid before reading the length
     let deckLength = 0;
     if (deck.cards && deck.cards.length) deckLength = deck.cards.length;
 
+    // deletes card upon clicking the delete button and then reloads the page
+    const deleteHandler = () => {
+        if (window.confirm("Delete this deck? \n\nYou will not be able to recover it")) {
+            deleteDeck(deck.id);
+            window.location.reload();
+        }
+    }
 
+    // html
     return (
         <div className="card">
             <div className="card-body">

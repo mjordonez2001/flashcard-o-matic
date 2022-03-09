@@ -1,5 +1,6 @@
 import React from "react";
 
+// error path page
 function NotFound() {
   return (
     <div className="NotFound">

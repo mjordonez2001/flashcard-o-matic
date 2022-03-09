@@ -6,11 +6,14 @@ import Study from "./Study/Study";
 import CreateDeck from "./CreateDeck/CreateDeck";
 import Deck from "./Deck/Deck";
 import EditDeck from "./EditDeck/EditDeck";
-import AddCard from "./AddCard/AddCard";
-import EditCard from "./EditCard/EditCard";
+import EditCard from "./ModifyCard/EditCard";
+import AddCard from "./ModifyCard/AddCard";
 import { Route, Switch } from "react-router-dom";
 
+// app
 function Layout() {
+
+  // all routes for Layout
   return (
     <Fragment>
       <Header />

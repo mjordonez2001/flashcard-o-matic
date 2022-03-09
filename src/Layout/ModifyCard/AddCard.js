@@ -4,11 +4,14 @@ import { readDeck } from "../../utils/api";
 import Form from "./Form";
 
 function AddCard() {
+    // crates a deckId based on the params
     const params = useParams();
     const deckId = params.deckId;
 
+    // creates a state for the current deck
     const [deck, setDeck] = useState({});
 
+    // loads the deck
     useEffect(() => {
         const abortController = new AbortController();
 
@@ -25,10 +28,7 @@ function AddCard() {
         return () => abortController.abort();
     }, [deckId])
 
-    const handleSubmit = () => {
-
-    }
-
+    // html -- uses Form component
     return (
         <div>
             <nav aria-label="breadcrumb">
@@ -38,11 +38,10 @@ function AddCard() {
                     <li className="breadcrumb-item active">Add Card</li>
                 </ol>
             </nav>
-            <h3>{title}</h3>
-            <Form deck={deck} cardFront={""} cardBack={""} formType={"add"}/>
+            <h3>{deck.name}: Add Card</h3>
+            <Form deck={deck} cardFront="" cardBack="" formType="add"/>
         </div>
-        
     )
 }
 
-export default AddCard; 
+export default AddCard;

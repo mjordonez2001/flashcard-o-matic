@@ -1,11 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom"
 
+// a single card component
 function Card( { card, deckId } ) {
+
+    // TODO: delete the card when user clicks delete button
+
+    // deletes card if user clicks delete button
     const deleteHandler = () => {
         window.confirm("Delete this card? \n\nYou will not be able to recover it");
     }
 
+    // html
     return (
         <div className="card">
             <div className="d-flex flex-row justify-content-between">
