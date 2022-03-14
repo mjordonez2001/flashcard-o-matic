@@ -39,13 +39,6 @@ function Deck() {
         }
     }
 
-    // loading screen
-    if (!deck.cards) {
-        return (
-            <h1>Loading...</h1>
-        )
-    }
-
     // sets the tile to "No Cards" if there are no cards in the deck, otherwise it's "Cards"
     let title = "";
     if (deck.cards && deck.cards.length) {
