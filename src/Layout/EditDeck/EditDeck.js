@@ -6,8 +6,6 @@ import { updateDeck } from "../../utils/api";
 // edits the selected deck
 function EditDeck() {
 
-    // TODO: make sure the form values start with the current deck data
-
     // creates deckId used in useEffect
     const params = useParams();
     const deckId = params.deckId;
@@ -39,8 +37,17 @@ function EditDeck() {
 
         loadDeck();
 
+        // if the deck has loaded, set deckData to current deck's data
+        if (deck.name) {
+            setDeckData({
+                name: deck.name,
+                description: deck.description,
+                id: deckId
+            })
+        }
+
         return () => abortController.abort();
-    }, [deckId])
+    }, [deckId, deck.name, deck.description])
 
     // changes deckData upon change in form
     const handleChange = ({target}) => {

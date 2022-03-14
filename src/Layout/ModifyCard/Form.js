@@ -1,28 +1,33 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {Link, useHistory} from "react-router-dom";
-import { createCard } from "../../utils/api";
+import { createCard, deleteCard } from "../../utils/api";
 
-function Form({deck, cardFront, cardBack, formType}) {
-
-    // TODO: make sure the form values start with the current card data
-    // TODO: properly add and edit cards using the API
+function Form({deck, cardFront, cardBack, formType, cardId}) {
 
     // initial form data
     const initialCardData = {
-        front: cardFront,
-        back: cardBack
+        front: "",
+        back: ""
     }
     // creates a state for the card form data 
     const [cardData, setCardData] = useState({...initialCardData});
-    //const history = useHistory();
+    const history = useHistory();
+
+    // sets the cardData to the current card data
+    useEffect(() => {
+        setCardData({
+            front: cardFront,
+            back: cardBack,
+            deckId: deck.id
+        });
+    }, [cardBack, cardFront, deck.id])
 
     // sets the cardData to the target value when the value of the form changes
     const handleChange = ({target}) => {
         setCardData({
             ...cardData,
             [target.name]: target.value
-        })
-        console.log(cardData)
+        });
     }
 
     // when the user submits, it adds/edits a card based on the cardData
@@ -30,10 +35,13 @@ function Form({deck, cardFront, cardBack, formType}) {
         event.preventDefault();
 
         if (formType === "add") {
-            createCard(cardData);
-            setCardData({...initialCardData})
-            //history.push(`decks/${deck.id}`)
+            createCard(deck.id, cardData);
+        } else if (formType === "edit") {
+            deleteCard(cardId);
+            createCard(deck.id, cardData);
         }
+
+        history.push(`/decks/${deck.id}`);
     }
 
     //html
@@ -60,7 +68,7 @@ function Form({deck, cardFront, cardBack, formType}) {
                     placeholder="Back side of card" />
             </div>
             <div className="d-flex flex-row">
-                <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">Done</Link>
+                <Link to={`/decks/${deck.id}`} className="btn btn-secondary mr-2">Cancel</Link>
                 <button type="submit" className="btn btn-primary">Save</button>
             </div>
         </form>

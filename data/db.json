@@ -11,19 +11,9 @@
       "id": 2
     },
     {
-      "name": "temp1",
+      "name": "temp12",
       "description": "temp1",
       "id": 3
-    },
-    {
-      "name": "temp2",
-      "description": "temp2",
-      "id": 4
-    },
-    {
-      "name": "temp3",
-      "description": "temp3",
-      "id": 5
     }
   ],
   "cards": [
@@ -63,6 +53,30 @@
       "back": "b",
       "deckId": 1,
       "id": 7
+    },
+    {
+      "front": "11",
+      "back": "111",
+      "deckId": 3,
+      "id": 9
+    },
+    {
+      "front": "23",
+      "back": "23",
+      "deckId": 3,
+      "id": 10
+    },
+    {
+      "front": "2222",
+      "back": "22222",
+      "deckId": 3,
+      "id": 11
+    },
+    {
+      "front": "11112",
+      "back": "11112",
+      "deckId": 3,
+      "id": 12
     }
   ]
 }

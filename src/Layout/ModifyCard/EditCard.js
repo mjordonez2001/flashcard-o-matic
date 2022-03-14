@@ -53,7 +53,7 @@ function EditCard() {
                 </ol>
             </nav>
             <h3>Edit Card</h3>
-            <Form deck={deck} cardFront={card.front} cardBack={card.back} formType="edit"/>
+            <Form deck={deck} cardFront={card.front} cardBack={card.back} formType="edit" cardId={cardId} />
         </div>
     )
 }
