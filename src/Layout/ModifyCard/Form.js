@@ -53,6 +53,7 @@ function Form({deck, cardFront, cardBack, formType, cardId}) {
                     className="form-control" 
                     id="front" 
                     name="front"
+                    required
                     value={cardData.front}
                     onChange={handleChange}
                     placeholder="Front side of card" />
@@ -63,6 +64,7 @@ function Form({deck, cardFront, cardBack, formType, cardId}) {
                     className="form-control" 
                     id="back" 
                     name="back"
+                    required
                     value={cardData.back}
                     onChange={handleChange}
                     placeholder="Back side of card" />

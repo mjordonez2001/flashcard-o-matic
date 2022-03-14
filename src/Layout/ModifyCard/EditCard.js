@@ -41,6 +41,9 @@ function EditCard() {
 
         return () => abortController.abort();
     }, [deckId, cardId])
+
+    // does not load page until deck and card have both loaded 
+    if (!deck.name || !card.front) return null;
  
     // html -- uses Form componet
     return (

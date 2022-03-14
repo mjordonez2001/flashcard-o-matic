@@ -39,6 +39,9 @@ function Deck() {
         }
     }
 
+    // does not load page until deck has loaded
+    if (!deck.name) return null;
+
     // sets the tile to "No Cards" if there are no cards in the deck, otherwise it's "Cards"
     let title = "";
     if (deck.cards && deck.cards.length) {

@@ -28,6 +28,8 @@ function AddCard() {
         return () => abortController.abort();
     }, [deckId])
 
+    if (!deck.name) return null;
+
     // html -- uses Form component
     return (
         <div>

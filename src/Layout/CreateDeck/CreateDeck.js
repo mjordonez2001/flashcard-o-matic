@@ -50,6 +50,7 @@ function CreateDeck() {
                         name="name"
                         value={deckData.name}
                         onChange={handleChange}
+                        required
                         placeholder="Deck Name" />
                 </div>
                 <div className="form-group">
@@ -60,6 +61,7 @@ function CreateDeck() {
                         name="description"
                         value={deckData.description}
                         onChange={handleChange}
+                        required
                         placeholder="Brief description of the deck" />
                 </div>
                 <div className="d-flex flex-row">

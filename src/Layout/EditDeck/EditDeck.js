@@ -64,6 +64,9 @@ function EditDeck() {
         history.push(`/decks/${deckId}`);
     }
 
+    // does not load page until deck has loaded 
+    if (!deck.name) return null;
+
     // html
     return (
         <div>
@@ -83,6 +86,7 @@ function EditDeck() {
                         className="form-control" 
                         id="name" 
                         name="name"
+                        required
                         onChange={handleChange}
                         value={deckData.name}
                         placeholder={deck.name} />
@@ -93,6 +97,7 @@ function EditDeck() {
                         className="form-control" 
                         id="description" 
                         name="description"
+                        required
                         onChange={handleChange}
                         value={deckData.description}
                         placeholder={deck.description} />

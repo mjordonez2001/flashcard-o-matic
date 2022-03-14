@@ -1,14 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { deleteCard } from "../../utils/api";
 
 // a single card component
 function Card( { card, deckId } ) {
 
     // TODO: delete the card when user clicks delete button
 
-    // deletes card if user clicks delete button
+    // deletes card if user clicks delete button and reloads the page
     const deleteHandler = () => {
-        window.confirm("Delete this card? \n\nYou will not be able to recover it");
+        if (window.confirm("Delete this card? \n\nYou will not be able to recover it")) {
+            deleteCard(card.id);
+            window.location.reload();
+        }
     }
 
     // html

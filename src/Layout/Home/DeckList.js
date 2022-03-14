@@ -33,6 +33,9 @@ function Decks() {
         );
     })
 
+    // does not load page until all decks have loaded
+    if (!decks.length) return null;
+
     // html
     return (
         <div>
