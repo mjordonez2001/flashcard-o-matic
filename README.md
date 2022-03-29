@@ -11,6 +11,7 @@ The app also uses React Router so that the app is a single page application and 
 The home screen shows a list of already created decks, with options to view, study, or delete each deck. 
 The home screen also contains a button where users can create a new deck.  
 </p>
+
 ![Home Screen](/README_IMGs/homescreen.png)
 
 ### New Deck Screen
@@ -18,6 +19,7 @@ The home screen also contains a button where users can create a new deck.
 The new deck screen allows users to submit a form creating a new deck with a name and a description.
 Clicking the cancel button brings users back to the home screen and clicking the submit button brings users to the deck screen of the newly created deck.
 </p>
+
 ![New Deck Screen](/README_IMGs/createdeck.png)
 
 ### Deck Screen
